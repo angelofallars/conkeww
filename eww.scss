@@ -1,0 +1,22 @@
+$bg: rgba(26, 27, 38, 0.9);
+$fg: #a9b1d6;
+$module-border: #5D79B8;
+
+* {
+  all: unset;
+}
+
+.keybinds {
+  background-color: $bg;
+  color: $fg;
+  padding: 15px 10px;
+  border: 3px solid $module-border;
+  border-radius: 10px;
+  font-family: "Source Code Pro", monospace;
+  font-weight: 600;
+  font-size: 1.05em;
+}
+
+.keybinds:hover {
+  background-color: red;
+}

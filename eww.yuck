@@ -1,0 +1,51 @@
+(defvar blue "#7aa2f7")
+
+(defpoll hostname :interval "1000000s"
+  `whoami`)
+(defpoll uptime :interval "1s"
+  `uptime -p`)
+(defpoll date :interval "60s"
+  `date "+%H:%M %P"`)
+
+(defwindow keybinds
+           :monitor 0
+           :geometry (geometry :x "-1%"
+                               :y "0px"
+                               :width "140px"
+                               :height "400px"
+                               :anchor "center right")
+           :stacking "fg"
+           :windowtype "dock"
+           :wm-ignore true
+  (keybind-text)
+)
+
+(defwidget keybind-text []
+  (label
+      :markup 
+"<span foreground='${blue}' size='large'><b>        AXYL INFO</b></span>
+
+<b>Hostname:</b> <span foreground='${blue}'>${hostname}</span>
+<b>Uptime:</b> <span foreground='${blue}'>${uptime}</span>
+<b>UTC:</b> <span foreground='${blue}'>${date}</span>
+
+<span foreground='${blue}' size='large'><b>       KEYBINDINGS</b></span>
+
+<span foreground='${blue}' weight='bold'>[S]+C</span>              Kill Window
+<span foreground='${blue}' weight='bold'>[S]+D</span>              dmenu
+<span foreground='${blue}' weight='bold'>[S]+N</span>              Network dmenu
+<span foreground='${blue}' weight='bold'>[S]+X</span>              Power Menu
+<span foreground='${blue}' weight='bold'>[Alt]+E</span>            Edit Configs
+<span foreground='${blue}' weight='bold'>[Alt]+L</span>            Quick Links
+<span foreground='${blue}' weight='bold'>[Ctrl]+[Alt]+L</span>     Lock
+<span foreground='${blue}' weight='bold'>[Ctrl]+[Shft]+R</span>    Reload
+<span foreground='${blue}' weight='bold'>[Ctrl]+[Shft]+Q</span>    Logout
+
+<span foreground='${blue}' weight='bold'>[S]+Enter</span>          Alacritty
+<span foreground='${blue}' weight='bold'>[S]+[Shft]+W</span>       Firefox
+<span foreground='${blue}' weight='bold'>[S]+[Shft]+F</span>       Thunar
+<span foreground='${blue}' weight='bold'>[S]+[Shft]+G</span>       Geany
+<span foreground='${blue}' weight='bold'>[S]+[Shft]+R</span>       Ranger
+<span foreground='${blue}' weight='bold'>[PrtSc]</span>            Screenshot"
+   )
+)
