@@ -1,8 +1,8 @@
-(defwidget conkeww-pane [title color text ?key-css ?value-css spacing]
+(defwidget conkeww-pane [?title color text ?key-css ?value-css spacing]
   (box :class "conkeww-pane"
        :orientation 'v'
        :space-evenly false
-       :spacing 10
+       :spacing 0
        :style "background-color: ${bg};
                color: ${fg};
                border-color: ${color}"
@@ -12,8 +12,15 @@
            :style "
                   background-color: ${color};
                   color: ${bg};
-                  margin-bottom: 3px;
-                  "
+
+                  ${ title != ''
+                  ? 
+                    'margin-bottom: 12px';
+                  : 
+                    'font-size: 0;
+                     opacity: 0;
+                     padding: 0;'
+                  }"
            :markup "${title}"
       )
 
