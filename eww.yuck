@@ -34,7 +34,9 @@
   (box :orientation 'v'
        :space-evenly 'false'
        :spacing 10
+
     (info-window :title "AXYl" 
+                 :color magenta
                  :key 
 "<b>Username:</b>
 <b>Uptime:</b>
@@ -43,12 +45,51 @@
 "<span>${username}</span>
 <span>${uptime}</span>
 <span>${date}</span>" 
-                 :color magenta)
-    (keybinds)
+                 )
+
+    (info-window :title "KEYBINDINGS"
+                 :color blue
+                 :key
+"[S]+C
+[S]+D
+[S]+N
+[S]+X
+[Alt]+E
+[Alt]+L
+
+[Ctrl]+[Alt]+L
+[Ctrl]+[Shft]+R
+[Ctrl]+[Shft]+Q
+
+[S]+Enter
+[S]+[Shft]+W
+[S]+[Shft]+F
+[S]+[Shft]+G
+[S]+[Shft]+R
+[PrtSc]"
+                  :value
+"Kill Window
+dmenu
+Network Menu
+Power Menu
+Edit Configs
+Quick Links
+
+Lock
+Reload
+Logout
+
+Alacritty
+Firefox
+Thunar
+Geany
+Ranger
+Screenshot"
+      )
     )
   )
 
-(defwidget info-window [title key value color]
+(defwidget info-window [title color key value]
   (box :class "info-window"
        :orientation 'v'
        :space-evenly false
@@ -69,102 +110,3 @@
 
 (defwidget info-window__text__entry [text color]
   (label :markup text))
-
-(defwidget system-info [color]
-  (box :class "info-window"
-       :orientation 'v'
-       :space-evenly false
-       :spacing "10"
-       :style "border-color: ${color}"
-    (title :text "AXYL" :color color)
-    (system-info__text :color color))
-  )
-
-(defwidget system-info__text [color]
-  (box :orientation 'h'
-       :space-evenly false
-       :spacing 10
-    (system-info__text__key :color color)
-    (system-info__text__value :color color))
-  )
-
-(defwidget system-info__text__key [color]
-  (label
-    :markup
-"<b>Username:</b>
-<b>Uptime:</b>
-<b>Time:</b>"
-      ) 
-  )
-
-(defwidget system-info__text__value [color]
-  (label
-    :markup
-"<span foreground='${color}'>${username}</span>
-<span foreground='${color}'>${uptime}</span>
-<span foreground='${color}'>${date}</span>"
-      ) 
-  )
-
-(defwidget keybinds []
-  (box :class "info-window keybinds"
-       :orientation 'v'
-       :space-evenly 'false'
-       :spacing "10"
-    (title :text "KEYBINDINGS" :color blue)
-    (keybinds__text))
-  )
-
-(defwidget keybinds__text []
-  (box :orientation 'h'
-       :space-evenly false
-       :spacing 30
-    (keybinds__text__key)
-    (keybinds__text__value))
-  )
-
-(defwidget keybinds__text__key []
-  (label
-    :markup 
-"<span foreground='${blue}' weight='bold'>[S]+C</span>
-<span foreground='${blue}' weight='bold'>[S]+D</span>
-<span foreground='${blue}' weight='bold'>[S]+N</span>
-<span foreground='${blue}' weight='bold'>[S]+X</span>
-<span foreground='${blue}' weight='bold'>[Alt]+E</span>
-<span foreground='${blue}' weight='bold'>[Alt]+L</span>
-
-<span foreground='${blue}' weight='bold'>[Ctrl]+[Alt]+L</span>
-<span foreground='${blue}' weight='bold'>[Ctrl]+[Shft]+R</span>
-<span foreground='${blue}' weight='bold'>[Ctrl]+[Shft]+Q</span>
-
-<span foreground='${blue}' weight='bold'>[S]+Enter</span>
-<span foreground='${blue}' weight='bold'>[S]+[Shft]+W</span>
-<span foreground='${blue}' weight='bold'>[S]+[Shft]+F</span>
-<span foreground='${blue}' weight='bold'>[S]+[Shft]+G</span>
-<span foreground='${blue}' weight='bold'>[S]+[Shft]+R</span>
-<span foreground='${blue}' weight='bold'>[PrtSc]</span>"
-    )
-  )
-
-(defwidget keybinds__text__value []
-  (label
-    :markup 
-"Kill Window
-dmenu
-Network Menu
-Power Menu
-Edit Configs
-Quick Links
-
-Lock
-Reload
-Logout
-
-Alacritty
-Firefox
-Thunar
-Geany
-Ranger
-Screenshot"
-    )
-  )
