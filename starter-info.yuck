@@ -1,5 +1,5 @@
 (include "./conkeww.yuck")
-(include "./color-tokyo.yuck")
+(include "./color-nord.yuck")
 
 (defpoll username :interval "1000000s"
   `whoami`)

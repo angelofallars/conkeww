@@ -11,7 +11,10 @@
        :orientation 'v'
        :space-evenly false
        :spacing 10
-       :style "border-color: ${color}"
+       :style "background-color: ${bg};
+               color: ${fg};
+               border-color: ${color}"
+
     (title             :text "${title}" :color color)
     (info-window__text :key key
                        :value value
