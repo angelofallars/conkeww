@@ -2,6 +2,7 @@
 (defvar green   "#9ece6a")
 (defvar magenta "#ad8ee6")
 (defvar bg      "#1A1B26")
+(include "./conkeww.yuck")
 
 (defpoll username :interval "1000000s"
   `whoami`)
@@ -19,14 +20,6 @@
   :windowtype "dock"
   :stacking "bg"
   (info-windows)
-  )
-
-(defwidget title [text color]
-  (label :class "title"
-         :halign "center"
-         :markup
-"<span foreground='${color}'><span background='${color}' foreground='${bg}'> ${text} </span></span>"
-   )
   )
 
 (defwidget info-windows []
@@ -87,35 +80,5 @@ Geany
 Ranger
 Screenshot"
       )
-    )
-  )
-
-(defwidget info-window [title color key value ?key-css ?value-css]
-  (box :class "info-window"
-       :orientation 'v'
-       :space-evenly false
-       :spacing 10
-       :style "border-color: ${color}"
-    (title             :text "${title}" :color color)
-    (info-window__text :key key
-                       :value value
-                       :color color
-                       :key-css key-css
-                       :value-css value-css)
-      )
-  )
-
-(defwidget info-window__text [key value color ?key-css ?value-css]
-  (box :orientation 'h'
-       :space-evenly false
-       :spacing 10
-    (info-window__text__entry :text key :color color :css key-css)
-    (info-window__text__entry :text value :color color :css value-css)
-    )
-  )
-
-(defwidget info-window__text__entry [text color css]
-  (label :markup text
-         :style {replace(css, "==color==", color)}
     )
   )
