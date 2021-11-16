@@ -7,24 +7,21 @@
                color: ${fg};
                border-color: ${color}"
 
-    (conkeww-pane__title :text "${title}" :color color)
+    (label :class "title"
+           :halign "center"
+           :style "
+                  background-color: ${color};
+                  color: ${bg};
+                  margin-bottom: 3px;
+                  "
+           :markup "${title}"
+      )
+
     (conkeww-pane__text  :text text
                          :color color
                          :key-css key-css
                          :value-css value-css)
       )
-  )
-
-(defwidget conkeww-pane__title [text color]
-  (label :class "title"
-         :halign "center"
-         :style "
-                 background-color: ${color};
-                 color: ${bg};
-                 margin-bottom: 3px;
-                "
-         :markup "${text}"
-   )
   )
 
 (defwidget conkeww-pane__text [text color ?key-css ?value-css]
