@@ -21,15 +21,6 @@
   (info-windows)
   )
 
-(defwidget info-windows []
-  (box :orientation 'v'
-       :space-evenly 'false'
-       :spacing 10
-    (system-info :color magenta)
-    (keybinds)
-    )
-  )
-
 (defwidget title [text color]
   (label :orientation "horizontal"
          :class "title"
@@ -39,10 +30,50 @@
    )
   )
 
+(defwidget info-windows []
+  (box :orientation 'v'
+       :space-evenly 'false'
+       :spacing 10
+    (info-window :title "AXYl" 
+                 :key 
+"<b>Username:</b>
+<b>Uptime:</b>
+<b>Time:</b>" 
+                 :value 
+"<span>${username}</span>
+<span>${uptime}</span>
+<span>${date}</span>" 
+                 :color magenta)
+    (keybinds)
+    )
+  )
+
+(defwidget info-window [title key value color]
+  (box :class "info-window"
+       :orientation 'v'
+       :space-evenly false
+       :spacing 10
+       :style "border-color: ${color}"
+    (title             :text "${title}" :color color)
+    (info-window__text :key key :value value :color color)
+    )
+)
+
+(defwidget info-window__text [key value color]
+  (box :orientation 'h'
+       :space-evenly false
+       :spacing 10
+    (info-window__text__entry :text key :color color)
+    (info-window__text__entry :text value :color color))
+  )
+
+(defwidget info-window__text__entry [text color]
+  (label :markup text))
+
 (defwidget system-info [color]
   (box :class "info-window"
        :orientation 'v'
-       :space-evenly 'false'
+       :space-evenly false
        :spacing "10"
        :style "border-color: ${color}"
     (title :text "AXYL" :color color)
