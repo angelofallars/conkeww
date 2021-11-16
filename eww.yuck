@@ -18,10 +18,10 @@
               )
   :windowtype "dock"
   :stacking "bg"
-  (boxes)
+  (info-windows)
   )
 
-(defwidget boxes []
+(defwidget info-windows []
   (box :orientation 'v'
        :space-evenly 'false'
        :spacing 10
