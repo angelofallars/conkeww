@@ -1,8 +1,5 @@
-(defvar blue    "#7aa2f7")
-(defvar green   "#9ece6a")
-(defvar magenta "#ad8ee6")
-(defvar bg      "#1A1B26")
 (include "./conkeww.yuck")
+(include "./color-tokyo.yuck")
 
 (defpoll username :interval "1000000s"
   `whoami`)
