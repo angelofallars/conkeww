@@ -3,7 +3,7 @@
 (defvar magenta "#ad8ee6")
 (defvar bg      "#1A1B26")
 
-(defpoll hostname :interval "1000000s"
+(defpoll username :interval "1000000s"
   `whoami`)
 (defpoll uptime :interval "1s"
   `uptime -p`)
@@ -16,10 +16,17 @@
                       :y "20px"
                       :anchor "center right"
               )
+  :windowtype "dock"
   :stacking "bg"
-  :windowtype "normal"
-  :wm-ignore true
   (boxes)
+  )
+
+(defwidget title [text color]
+  (label :orientation "horizontal"
+         :halign "center"
+         :markup
+"<span foreground='${color}' size='large'><b><span background='${color}' foreground='${bg}'> ${text} </span></b></span>"
+   )
   )
 
 (defwidget boxes []
@@ -32,29 +39,42 @@
   )
 
 (defwidget system-info []
-  (label
-    :class "info-window system-info"
-    :markup
-"<span foreground='${magenta}' size='large'><b>          <span background='${magenta}' foreground='${bg}'> AXYL </span></b></span>
+  (box :class "info-window system-info"
+       :orientation 'v'
+       :space-evenly 'false'
+       :spacing "10"
+    (title :text "AXYL" :color magenta)
+    (system-info__text))
+  )
 
-<b>Hostname:</b> <span foreground='${magenta}'>${hostname}</span>
+(defwidget system-info__text []
+  (label
+    :markup
+"<b>Username:</b> <span foreground='${magenta}'>${username}</span>
 <b>Uptime:</b> <span foreground='${magenta}'>${uptime}</span>
-<b>UTC:</b> <span foreground='${magenta}'>${date}</span>"
+<b>Time:</b> <span foreground='${magenta}'>${date}</span>"
       ) 
   )
 
 (defwidget keybinds []
-  (label
-    :class "info-window keybinds"
-    :markup 
-"<span foreground='${blue}' size='large'><b>       <span background='${blue}' foreground='${bg}'> KEYBINDINGS </span></b></span>
+  (box :class "info-window keybinds"
+       :orientation 'v'
+       :space-evenly 'false'
+       :spacing "10"
+    (title :text "KEYBINDINGS" :color blue)
+    (keybinds__text))
+  )
 
-<span foreground='${blue}' weight='bold'>[S]+C</span>              Kill Window
+(defwidget keybinds__text []
+  (label
+    :markup 
+"<span foreground='${blue}' weight='bold'>[S]+C</span>              Kill Window
 <span foreground='${blue}' weight='bold'>[S]+D</span>              dmenu
-<span foreground='${blue}' weight='bold'>[S]+N</span>              Network dmenu
+<span foreground='${blue}' weight='bold'>[S]+N</span>              Network Menu
 <span foreground='${blue}' weight='bold'>[S]+X</span>              Power Menu
 <span foreground='${blue}' weight='bold'>[Alt]+E</span>            Edit Configs
 <span foreground='${blue}' weight='bold'>[Alt]+L</span>            Quick Links
+
 <span foreground='${blue}' weight='bold'>[Ctrl]+[Alt]+L</span>     Lock
 <span foreground='${blue}' weight='bold'>[Ctrl]+[Shft]+R</span>    Reload
 <span foreground='${blue}' weight='bold'>[Ctrl]+[Shft]+Q</span>    Logout
