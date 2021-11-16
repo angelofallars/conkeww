@@ -23,9 +23,10 @@
 
 (defwidget title [text color]
   (label :orientation "horizontal"
+         :class "title"
          :halign "center"
          :markup
-"<span foreground='${color}' size='large'><b><span background='${color}' foreground='${bg}'> ${text} </span></b></span>"
+"<span foreground='${color}'><span background='${color}' foreground='${bg}'> ${text} </span></span>"
    )
   )
 
@@ -33,29 +34,30 @@
   (box :orientation 'v'
        :space-evenly 'false'
        :spacing 10
-    (system-info)
+    (system-info :color magenta)
     (keybinds)
     )
   )
 
-(defwidget system-info []
-  (box :class "info-window system-info"
+(defwidget system-info [color]
+  (box :class "info-window"
        :orientation 'v'
        :space-evenly 'false'
        :spacing "10"
-    (title :text "AXYL" :color magenta)
-    (system-info__text))
+       :style "border-color: ${color}"
+    (title :text "AXYL" :color color)
+    (system-info__text :color color))
   )
 
-(defwidget system-info__text []
+(defwidget system-info__text [color]
   (box :orientation 'h'
        :space-evenly false
        :spacing 10
-    (system-info__text__key)
-    (system-info__text__value))
+    (system-info__text__key :color color)
+    (system-info__text__value :color color))
   )
 
-(defwidget system-info__text__key []
+(defwidget system-info__text__key [color]
   (label
     :markup
 "<b>Username:</b>
@@ -64,12 +66,12 @@
       ) 
   )
 
-(defwidget system-info__text__value []
+(defwidget system-info__text__value [color]
   (label
     :markup
-"<span foreground='${magenta}'>${username}</span>
-<span foreground='${magenta}'>${uptime}</span>
-<span foreground='${magenta}'>${date}</span>"
+"<span foreground='${color}'>${username}</span>
+<span foreground='${color}'>${uptime}</span>
+<span foreground='${color}'>${date}</span>"
       ) 
   )
 
@@ -83,24 +85,55 @@
   )
 
 (defwidget keybinds__text []
+  (box :orientation 'h'
+       :space-evenly false
+       :spacing 30
+    (keybinds__text__key)
+    (keybinds__text__value))
+  )
+
+(defwidget keybinds__text__key []
   (label
     :markup 
-"<span foreground='${blue}' weight='bold'>[S]+C</span>              Kill Window
-<span foreground='${blue}' weight='bold'>[S]+D</span>              dmenu
-<span foreground='${blue}' weight='bold'>[S]+N</span>              Network Menu
-<span foreground='${blue}' weight='bold'>[S]+X</span>              Power Menu
-<span foreground='${blue}' weight='bold'>[Alt]+E</span>            Edit Configs
-<span foreground='${blue}' weight='bold'>[Alt]+L</span>            Quick Links
+"<span foreground='${blue}' weight='bold'>[S]+C</span>
+<span foreground='${blue}' weight='bold'>[S]+D</span>
+<span foreground='${blue}' weight='bold'>[S]+N</span>
+<span foreground='${blue}' weight='bold'>[S]+X</span>
+<span foreground='${blue}' weight='bold'>[Alt]+E</span>
+<span foreground='${blue}' weight='bold'>[Alt]+L</span>
 
-<span foreground='${blue}' weight='bold'>[Ctrl]+[Alt]+L</span>     Lock
-<span foreground='${blue}' weight='bold'>[Ctrl]+[Shft]+R</span>    Reload
-<span foreground='${blue}' weight='bold'>[Ctrl]+[Shft]+Q</span>    Logout
+<span foreground='${blue}' weight='bold'>[Ctrl]+[Alt]+L</span>
+<span foreground='${blue}' weight='bold'>[Ctrl]+[Shft]+R</span>
+<span foreground='${blue}' weight='bold'>[Ctrl]+[Shft]+Q</span>
 
-<span foreground='${blue}' weight='bold'>[S]+Enter</span>          Alacritty
-<span foreground='${blue}' weight='bold'>[S]+[Shft]+W</span>       Firefox
-<span foreground='${blue}' weight='bold'>[S]+[Shft]+F</span>       Thunar
-<span foreground='${blue}' weight='bold'>[S]+[Shft]+G</span>       Geany
-<span foreground='${blue}' weight='bold'>[S]+[Shft]+R</span>       Ranger
-<span foreground='${blue}' weight='bold'>[PrtSc]</span>            Screenshot"
+<span foreground='${blue}' weight='bold'>[S]+Enter</span>
+<span foreground='${blue}' weight='bold'>[S]+[Shft]+W</span>
+<span foreground='${blue}' weight='bold'>[S]+[Shft]+F</span>
+<span foreground='${blue}' weight='bold'>[S]+[Shft]+G</span>
+<span foreground='${blue}' weight='bold'>[S]+[Shft]+R</span>
+<span foreground='${blue}' weight='bold'>[PrtSc]</span>"
+    )
+  )
+
+(defwidget keybinds__text__value []
+  (label
+    :markup 
+"Kill Window
+dmenu
+Network Menu
+Power Menu
+Edit Configs
+Quick Links
+
+Lock
+Reload
+Logout
+
+Alacritty
+Firefox
+Thunar
+Geany
+Ranger
+Screenshot"
     )
   )
