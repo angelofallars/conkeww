@@ -1,5 +1,5 @@
 (defvar fg      "#D8DEE9")
-(defvar bg      "#2E3440")
+(defvar bg      "rgba(46, 52, 64, 0.8)")
 (defvar red     "#BF616A")
 (defvar green   "#A3BE8C")
 (defvar yellow  "#EBCB8B")
