@@ -1,9 +1,9 @@
 (include "./conkeww.yuck")
-(include "./color-nord.yuck")
+(include "./color-tokyo.yuck")
 
 (defpoll username :interval "1000000s"
   `whoami`)
-(defpoll uptime :interval "1s"
+(defpoll uptime :interval "60s"
   `uptime -p`)
 (defpoll date :interval "60s"
   `date "+%H:%M %P"`)
