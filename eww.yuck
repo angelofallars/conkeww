@@ -27,18 +27,18 @@
        :spacing 10
 
     (conkeww-pane :title "AXYl"
-                 :color magenta
-                 :value-css "font-weight: 700; color: ==color=="
-                 :text 
+                  :color magenta
+                  :value-css "font-weight: 700; color: ==color=="
+                  :text 
 "Username: === ${username}
 Uptime:    === ${uptime}
 Time:      === ${date}"
                  )
 
     (conkeww-pane :title "KEYBINDINGS"
-                 :color blue
-                 :key-css "font-weight: 700; color: ==color=="
-                 :text
+                  :color blue
+                  :key-css "font-weight: 700; color: ==color=="
+                  :text
 "[S]+C          === Kill Window
 [S]+D           === dmenu
 [S]+N           === Network Menu
