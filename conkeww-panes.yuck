@@ -13,7 +13,7 @@ s/, / /g'`)
        :space-evenly 'false'
        :spacing 10
 
-    (conkeww-pane :title "AXYl"
+    (conkeww-pane :title "AXYL"
                   :color magenta
                   :spacing 69 
                   :value-css "font-weight: 700; color: ==color=="
