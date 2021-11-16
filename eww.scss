@@ -1,20 +1,27 @@
 $bg: rgba(26, 27, 38, 0.9);
-$fg: #a9b1d6;
+$fg:            #a9b1d6;
+$blue:          #7aa2f7;
+$green:         #9ece6a;
+$magenta:       #ad8ee6;
 $module-border: #5D79B8;
 
 * {
   all: unset;
 }
 
-.keybinds {
+.info-window {
   background-color: $bg;
   color: $fg;
-  padding: 15px 10px;
   border: 3px solid $module-border;
   border-radius: 10px;
   font-family: "Source Code Pro", monospace;
   font-weight: 600;
-  font-size: 1.05em;
+  font-size: 1.08em;
+  padding: 18px 10px;
+}
+
+.system-info {
+  border-color: $magenta;
 }
 
 .keybinds:hover {

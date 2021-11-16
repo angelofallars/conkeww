@@ -1,4 +1,7 @@
-(defvar blue "#7aa2f7")
+(defvar blue    "#7aa2f7")
+(defvar green   "#9ece6a")
+(defvar magenta "#ad8ee6")
+(defvar bg      "#1A1B26")
 
 (defpoll hostname :interval "1000000s"
   `whoami`)
@@ -7,29 +10,41 @@
 (defpoll date :interval "60s"
   `date "+%H:%M %P"`)
 
-(defwindow keybinds
+(defwindow starter-info
            :monitor 0
            :geometry (geometry :x "-1%"
-                               :y "0px"
-                               :width "140px"
-                               :height "400px"
+                               :y "20px"
                                :anchor "center right")
-           :stacking "fg"
-           :windowtype "dock"
+           :stacking "bg"
+           :windowtype "normal"
            :wm-ignore true
-  (keybind-text)
+  (boxes)
 )
 
-(defwidget keybind-text []
+(defwidget boxes []
+    (box :orientation 'v'
+         :space-evenly 'false'
+         :spacing 10
+     (system-info)
+     (keybinds)))
+
+(defwidget system-info []
+    (label
+        :class "info-window system-info"
+        :markup
+"<span foreground='${magenta}' size='large'><b>          <span background='${magenta}' foreground='${bg}'> AXYL </span></b></span>
+
+<b>Hostname:</b> <span foreground='${magenta}'>${hostname}</span>
+<b>Uptime:</b> <span foreground='${magenta}'>${uptime}</span>
+<b>UTC:</b> <span foreground='${magenta}'>${date}</span>"
+    ) 
+)
+
+(defwidget keybinds []
   (label
+      :class "info-window keybinds"
       :markup 
-"<span foreground='${blue}' size='large'><b>        AXYL INFO</b></span>
-
-<b>Hostname:</b> <span foreground='${blue}'>${hostname}</span>
-<b>Uptime:</b> <span foreground='${blue}'>${uptime}</span>
-<b>UTC:</b> <span foreground='${blue}'>${date}</span>
-
-<span foreground='${blue}' size='large'><b>       KEYBINDINGS</b></span>
+"<span foreground='${blue}' size='large'><b>       <span background='${blue}' foreground='${bg}'> KEYBINDINGS </span></b></span>
 
 <span foreground='${blue}' weight='bold'>[S]+C</span>              Kill Window
 <span foreground='${blue}' weight='bold'>[S]+D</span>              dmenu
