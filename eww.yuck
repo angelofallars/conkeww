@@ -13,8 +13,9 @@
 (defwindow starter-info
   :monitor 0
   :geometry (geometry :x "-1%"
-  :y "20px"
-  :anchor "center right")
+                      :y "20px"
+                      :anchor "center right"
+              )
   :stacking "bg"
   :windowtype "normal"
   :wm-ignore true
@@ -26,25 +27,26 @@
        :space-evenly 'false'
        :spacing 10
     (system-info)
-    (keybinds))
+    (keybinds)
+    )
   )
 
 (defwidget system-info []
-    (label
-        :class "info-window system-info"
-        :markup
+  (label
+    :class "info-window system-info"
+    :markup
 "<span foreground='${magenta}' size='large'><b>          <span background='${magenta}' foreground='${bg}'> AXYL </span></b></span>
 
 <b>Hostname:</b> <span foreground='${magenta}'>${hostname}</span>
 <b>Uptime:</b> <span foreground='${magenta}'>${uptime}</span>
 <b>UTC:</b> <span foreground='${magenta}'>${date}</span>"
-    ) 
-)
+      ) 
+  )
 
 (defwidget keybinds []
   (label
-      :class "info-window keybinds"
-      :markup 
+    :class "info-window keybinds"
+    :markup 
 "<span foreground='${blue}' size='large'><b>       <span background='${blue}' foreground='${bg}'> KEYBINDINGS </span></b></span>
 
 <span foreground='${blue}' weight='bold'>[S]+C</span>              Kill Window
@@ -63,5 +65,5 @@
 <span foreground='${blue}' weight='bold'>[S]+[Shft]+G</span>       Geany
 <span foreground='${blue}' weight='bold'>[S]+[Shft]+R</span>       Ranger
 <span foreground='${blue}' weight='bold'>[PrtSc]</span>            Screenshot"
-   )
-)
+    )
+  )
