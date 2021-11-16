@@ -8,7 +8,7 @@
 (defpoll date :interval "60s"
   `date "+%H:%M %P"`)
 
-(defwindow starter-info
+(defwindow conkeww-main
   :monitor 0
   :geometry (geometry :x "-1%"
                       :y "20px"
@@ -27,55 +27,33 @@
     (info-window :title "AXYl"
                  :color magenta
                  :value-css "font-weight: 700; color: ==color=="
-                 :key 
-"Username:
-Uptime:
-Time:"
-                 :value 
-"<span>${username}</span>
-<span>${uptime}</span>
-<span>${date}</span>" 
+                 :text 
+"Username: === ${username}
+Uptime:    === ${uptime}
+Time:      === ${date}"
                  )
 
     (info-window :title "KEYBINDINGS"
                  :color blue
                  :key-css "font-weight: 700; color: ==color=="
-                 :key
-"[S]+C
-[S]+D
-[S]+N
-[S]+X
-[Alt]+E
-[Alt]+L
+                 :text
+"[S]+C          === Kill Window
+[S]+D           === dmenu
+[S]+N           === Network Menu
+[S]+X           === Power Menu
+[Alt]+E         === Edit Configs
+[Alt]+L         === Quick Links
 
-[Ctrl]+[Alt]+L
-[Ctrl]+[Shft]+R
-[Ctrl]+[Shft]+Q
+[Ctrl]+[Alt]+L  === Lock
+[Ctrl]+[Shft]+R === Reload
+[Ctrl]+[Shft]+Q === Logout
 
-[S]+Enter
-[S]+[Shft]+W
-[S]+[Shft]+F
-[S]+[Shft]+G
-[S]+[Shft]+R
-[PrtSc]"
-                  :value
-"Kill Window
-dmenu
-Network Menu
-Power Menu
-Edit Configs
-Quick Links
-
-Lock
-Reload
-Logout
-
-Alacritty
-Firefox
-Thunar
-Geany
-Ranger
-Screenshot"
+[S]+Enter       === Alacritty
+[S]+[Shft]+W    === Firefox
+[S]+[Shft]+F    === Thunar
+[S]+[Shft]+G    === Geany
+[S]+[Shft]+R    === Ranger
+[PrtSc]         === Screenshot"
       )
     )
   )

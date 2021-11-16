@@ -6,7 +6,7 @@
    )
   )
 
-(defwidget info-window [title color key value ?key-css ?value-css]
+(defwidget info-window [title color text ?key-css ?value-css]
   (box :class "info-window"
        :orientation 'v'
        :space-evenly false
@@ -16,20 +16,23 @@
                border-color: ${color}"
 
     (title             :text "${title}" :color color)
-    (info-window__text :key key
-                       :value value
+    (info-window__text :text text
                        :color color
                        :key-css key-css
                        :value-css value-css)
       )
   )
 
-(defwidget info-window__text [key value color ?key-css ?value-css]
+(defwidget info-window__text [text color ?key-css ?value-css]
   (box :orientation 'h'
        :space-evenly false
        :spacing 10
-    (info-window__text__entry :text key :color color :css key-css)
-    (info-window__text__entry :text value :color color :css value-css)
+    (info-window__text__entry :text {replace(text, "( )+===( )+.+", "")}
+                              :color color
+                              :css key-css)
+    (info-window__text__entry :text {replace(text, ".+( )+===( )+", "")}
+                              :color color
+                              :css value-css)
     )
   )
 
