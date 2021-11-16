@@ -11,22 +11,23 @@
   `date "+%H:%M %P"`)
 
 (defwindow starter-info
-           :monitor 0
-           :geometry (geometry :x "-1%"
-                               :y "20px"
-                               :anchor "center right")
-           :stacking "bg"
-           :windowtype "normal"
-           :wm-ignore true
+  :monitor 0
+  :geometry (geometry :x "-1%"
+  :y "20px"
+  :anchor "center right")
+  :stacking "bg"
+  :windowtype "normal"
+  :wm-ignore true
   (boxes)
-)
+  )
 
 (defwidget boxes []
-    (box :orientation 'v'
-         :space-evenly 'false'
-         :spacing 10
-     (system-info)
-     (keybinds)))
+  (box :orientation 'v'
+       :space-evenly 'false'
+       :spacing 10
+    (system-info)
+    (keybinds))
+  )
 
 (defwidget system-info []
     (label
