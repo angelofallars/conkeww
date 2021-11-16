@@ -48,11 +48,28 @@
   )
 
 (defwidget system-info__text []
+  (box :orientation 'h'
+       :space-evenly false
+       :spacing 10
+    (system-info__text__key)
+    (system-info__text__value))
+  )
+
+(defwidget system-info__text__key []
   (label
     :markup
-"<b>Username:</b> <span foreground='${magenta}'>${username}</span>
-<b>Uptime:</b> <span foreground='${magenta}'>${uptime}</span>
-<b>Time:</b> <span foreground='${magenta}'>${date}</span>"
+"<b>Username:</b>
+<b>Uptime:</b>
+<b>Time:</b>"
+      ) 
+  )
+
+(defwidget system-info__text__value []
+  (label
+    :markup
+"<span foreground='${magenta}'>${username}</span>
+<span foreground='${magenta}'>${uptime}</span>
+<span foreground='${magenta}'>${date}</span>"
       ) 
   )
 
