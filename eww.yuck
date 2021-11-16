@@ -18,15 +18,15 @@
               )
   :windowtype "dock"
   :stacking "bg"
-  (info-windows)
+  (conkeww-panes)
   )
 
-(defwidget info-windows []
+(defwidget conkeww-panes []
   (box :orientation 'v'
        :space-evenly 'false'
        :spacing 10
 
-    (info-window :title "AXYl"
+    (conkeww-pane :title "AXYl"
                  :color magenta
                  :value-css "font-weight: 700; color: ==color=="
                  :text 
@@ -35,7 +35,7 @@ Uptime:    === ${uptime}
 Time:      === ${date}"
                  )
 
-    (info-window :title "KEYBINDINGS"
+    (conkeww-pane :title "KEYBINDINGS"
                  :color blue
                  :key-css "font-weight: 700; color: ==color=="
                  :text
