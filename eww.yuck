@@ -11,7 +11,9 @@
 (defwindow conkeww-main
   :monitor 0
   :geometry (geometry :x "-1%"
+                      :width 340
                       :y "20px"
+                      :hexpand false
                       :anchor "center right"
               )
   :windowtype "dock"
