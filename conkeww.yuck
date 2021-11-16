@@ -18,7 +18,11 @@
 (defwidget conkeww-pane__title [text color]
   (label :class "title"
          :halign "center"
-         :style "background-color: ${color}; color: ${bg}"
+         :style "
+                 background-color: ${color};
+                 color: ${bg};
+                 margin-bottom: 3px;
+                "
          :markup "${text}"
    )
   )
@@ -26,7 +30,7 @@
 (defwidget conkeww-pane__text [text color ?key-css ?value-css]
   (box :orientation 'h'
        :space-evenly false
-       :spacing 10
+       :spacing 15
     (conkeww-pane__text__entry :text {replace(text, "( )+===( )+.+", "")}
                                :color color
                                :css key-css)
