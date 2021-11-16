@@ -21,15 +21,6 @@
   (boxes)
   )
 
-(defwidget title [text color]
-  (label :orientation "horizontal"
-         :class "title"
-         :halign "center"
-         :markup
-"<span foreground='${color}'><span background='${color}' foreground='${bg}'> ${text} </span></span>"
-   )
-  )
-
 (defwidget boxes []
   (box :orientation 'v'
        :space-evenly 'false'
@@ -37,6 +28,15 @@
     (system-info :color magenta)
     (keybinds)
     )
+  )
+
+(defwidget title [text color]
+  (label :orientation "horizontal"
+         :class "title"
+         :halign "center"
+         :markup
+"<span foreground='${color}'><span background='${color}' foreground='${bg}'> ${text} </span></span>"
+   )
   )
 
 (defwidget system-info [color]
