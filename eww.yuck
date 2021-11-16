@@ -18,6 +18,7 @@
               )
   :windowtype "dock"
   :stacking "bg"
+  :wm-ignore true
   (conkeww-panes)
   )
 
