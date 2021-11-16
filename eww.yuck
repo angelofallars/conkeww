@@ -30,6 +30,7 @@ s/, / /g'`)
 
     (conkeww-pane :title "AXYL"
                   :color magenta
+                  :spacing 69 
                   :value-css "font-weight: 700; color: ==color=="
                   :text 
 "Username: === ${username}
@@ -39,6 +40,7 @@ Time:      === ${date}"
 
     (conkeww-pane :title "KEYBINDINGS"
                   :color blue
+                  :spacing 15
                   :key-css "font-weight: 700; color: ==color=="
                   :text
 "[S]+C          === Kill Window

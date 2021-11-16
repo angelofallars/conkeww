@@ -1,4 +1,4 @@
-(defwidget conkeww-pane [title color text ?key-css ?value-css]
+(defwidget conkeww-pane [title color text ?key-css ?value-css spacing]
   (box :class "conkeww-pane"
        :orientation 'v'
        :space-evenly false
@@ -20,14 +20,15 @@
     (conkeww-pane__text  :text text
                          :color color
                          :key-css key-css
-                         :value-css value-css)
+                         :value-css value-css
+                         :spacing spacing)
       )
   )
 
-(defwidget conkeww-pane__text [text color ?key-css ?value-css]
+(defwidget conkeww-pane__text [text color ?key-css ?value-css spacing]
   (box :orientation 'h'
        :space-evenly false
-       :spacing 15
+       :spacing spacing
     (conkeww-pane__text__entry :text {replace(text, "( )+===( )+.+", "")}
                                :color color
                                :css key-css)
