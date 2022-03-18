@@ -40,6 +40,7 @@ Time:      === ${date}"
 [Ctrl]+[Shft]+Q === Logout
 
 [S]+Enter       === Alacritty
+[S]+[Shft]+E    === Conkeww
 [S]+[Shft]+W    === Firefox
 [S]+[Shft]+F    === Thunar
 [S]+[Shft]+G    === Geany
